@@ -22,6 +22,7 @@ export const Login = () => {
         setToken(data.token);
       })
       .catch((error) => {
+        console.log(error)
         console.error('Error:', error);
       });
   };
