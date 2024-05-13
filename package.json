@@ -13,7 +13,7 @@
     "build":"npm run build  --workspace=app",
     "start":"npm run start  --workspace=api",
     "dev":"npm run dev  --workspace=api",
-    "dev:api":"npm run build &&  npm run dev --workspace=api"
+    "dev:api":"npm run build && npm run dev"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.0.2",

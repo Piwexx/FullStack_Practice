@@ -1,4 +1,5 @@
 const {app,server} = require('../../../app')
+const userRepository = require('../../repositories/userRepository');
 const supertest = require('supertest')
 const api = supertest(app)
 
@@ -37,18 +38,17 @@ const notes = [{
  //User
 
  const deleteAllUsers = async()=>{
-  await  await User.deleteMany({})
+  await  await userRepository.deleteAll()
 }
 
 const saveUser = async (username,name,password)=>{
-  const hashedPassword = await bcrypt.hash(password,10)
-  const user = new User({username,name,password:hashedPassword})
-  await  user.save()
+  const user = userRepository.createUser({username,password,name})
+  return user
 }
  
 const getAllUsers = async()=>{
-  const users = await User.find({})
+  const users = await userRepository.getAll()
   return users
 }
 
-module.exports = {}
+module.exports = {app,server,deleteAllUsers,saveUser,getAllUsers}

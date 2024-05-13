@@ -22,6 +22,9 @@ class BaseRepository {
     async delete(id) {
       return this.model.findByIdAndDelete(id);
     }
+    async deleteAll() {
+      return this.model.deleteMany({});
+    }
   }
   
   module.exports = BaseRepository;

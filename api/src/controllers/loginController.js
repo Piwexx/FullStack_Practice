@@ -8,7 +8,6 @@ async function login(req,res,next){
         const { body } = req;
         const { username, password } = body;
         
-
         if(!username || !password ){
             throw new BadRequestError('Please provide username and password')
         }
