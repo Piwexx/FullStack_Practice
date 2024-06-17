@@ -1,7 +1,7 @@
-const { login } = require('../controllers/loginController');
-const { BadRequestError, UnauthenticatedError } = require('../errors/index');
+const { login } = require('./loginController');
+const { BadRequestError, UnauthenticatedError } = require('../../errors/index');
 const { StatusCodes } = require('http-status-codes');
-const {mockUser,mockToken} = require("./helpers/helpes")
+const {mockUser,mockToken} = require("../../test/helpers/helpes")
 
 jest.mock('../repositories/userRepository', () => ({
   findByUsername: jest.fn(),
@@ -9,7 +9,7 @@ jest.mock('../repositories/userRepository', () => ({
   createToken: jest.fn(),
 }));
 
-const userRepository = require('../repositories/userRepository');
+const userRepository = require('../../repositories/userRepository');
 
 describe('login function', () => {
   let req, res, next;
@@ -21,6 +21,8 @@ describe('login function', () => {
       json: jest.fn(),
     };
     next = jest.fn();
+
+    jest.clearAllMocks();
   });
 
   test('should login successfully with valid credentials', async () => {

@@ -1,4 +1,4 @@
-const {mongoose} = require("../db/db");
+const {mongoose} = require("../../../db/db");
 const {model,Schema} = mongoose
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')

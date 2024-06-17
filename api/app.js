@@ -47,10 +47,8 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
 
 // Routes
-app.use('/api/v1/notes',userExtractor,notesRoutes);
-app.use('/api/v1/user', userExtractor,usersRoutes);
-app.use('/api/v1/login', loginRoutes);
-app.use('/api/v1/register', registerRoutes);
+app.use('/api/v1/notes',notesRoutes);
+app.use('/api/v1/user',usersRoutes);
 
 // Centralized error handling
 app.use(errorHandlerMiddleware);
