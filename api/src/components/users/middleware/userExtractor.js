@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { UnauthenticatedError } = require('../errors')
+const { UnauthenticatedError } = require('../../../common/errors')
 
 const userExtractor = ( req, res, next) => {
     const authHeader = req.headers['authorization'];

@@ -1,6 +1,6 @@
-const NoteRepository = require('../../repositories/note/NoteRepository');
-const UserRepository = require('../../repositories/user/UserRepository');
-const { NoteNotFoundError, BadRequestError } = require('../errors');
+const NoteRepository = require('../repository/noteRepository');
+const UserRepository = require('../../users/repository/userRepository');
+const { NoteNotFoundError, BadRequestError } = require('../../../common/errors');
 
 class NoteService {
   async getAllNotes(userId) {
@@ -33,7 +33,7 @@ class NoteService {
   }
 
   async getNoteById(userId, noteId) {
-    const note = await NoteRepository.findOne({ _id: noteId, user: userId });
+    const note = await NoteRepository.findNoteById({ _id: noteId, user: userId });
 
     if (!note) {
       throw new NoteNotFoundError('Nota no encontrada');

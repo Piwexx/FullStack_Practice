@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const UserService = require('../../services/UserService');
+const UserService = require('../service/userService');
 
 async function getUser(req, res, next) {
   try {

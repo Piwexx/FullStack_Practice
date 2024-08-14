@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-const { db } = require("./src/db/db");
-const  userExtractor = require('./src/middleware/userExtractor')
+const { db } = require("./src/config/db/db");
 
 //Extra security packages
 const cors = require('cors');
@@ -15,12 +14,10 @@ const rateLimiter = require('express-rate-limit');
 //Routes
 const notesRoutes = require('./src/routes/notesRoutes');
 const usersRoutes = require('./src/routes/usersRoutes');
-const loginRoutes = require("./src/routes/loginRoutes")
-const registerRoutes = require('./src/routes/registerRoutes')
 
 //error handler
-const errorHandlerMiddleware = require('./src/middleware/error-handler');
-const notFound = require('./src/middleware/not-found')
+const errorHandlerMiddleware = require('./src/common/middleware/error-handler');
+const notFound = require('./src/common/middleware/not-found')
 const configureSentry = require("./src/config/sentry");
 
 
@@ -63,13 +60,16 @@ async function startServer() {
     const server = app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
     });
-    // Export both app and server
-    module.exports = { app, server };
+    return server
   } catch (error) {
     console.error('Error starting the server:', error.message);
     process.exit(1);
   }
 }
 
-// Start the server
-startServer();
+if (require.main === module) {
+  startServer();
+}
+
+// exports
+module.exports = { startServer, app };

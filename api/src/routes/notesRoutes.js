@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { createNote,getAllNotes,deleteNote,getNoteById,updateNote} = require('../controllers/notesController');
+const { createNote,getAllNotes,deleteNote,getNoteById,updateNote} = require('../components/notes/controllers/notesController');
+const authMiddleware = require("../components/users/middleware/userExtractor")
 
 // Middleware aplicado solo a las rutas que siguen
 router.use(authMiddleware);

@@ -1,5 +1,5 @@
-const UserRepository = require('../../repositories/user/userRepository');
-const { BadRequestError, UnauthenticatedError } = require('../../errors');
+const UserRepository = require('../repository/userRepository');
+const { BadRequestError, UnauthenticatedError } = require('../../../common/errors');
 
 class UserService {
   
@@ -21,7 +21,7 @@ class UserService {
       throw new UnauthenticatedError('Invalid Credentials');
     }
 
-    const token = userRepository.createToken(user);
+    const token = UserRepository.createToken(user);
 
     return {
       token: token,

@@ -1,6 +1,6 @@
 // src/controllers/NoteController.js
 const { StatusCodes } = require('http-status-codes');
-const NoteService = require('../../services/notesService/notesService');
+const NoteService = require('../service/notesService');
 
 async function getAllNotes(req, res, next) {
   try {

@@ -1,5 +1,5 @@
-const BaseRepository = require('./baseRepository');
-const UserModel = require('../../models/User');
+const BaseRepository = require('../../../common/repository/baseRepository');
+const UserModel = require('../models/User');
 
 class UserRepository extends BaseRepository {
   constructor() {
@@ -19,7 +19,6 @@ class UserRepository extends BaseRepository {
   }
 
   async createUser(userData) {
-    
     const user = new this.model(userData)
     const result = await user.save();
 

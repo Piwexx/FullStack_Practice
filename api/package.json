@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node app.js",
     "lint": "eslint . --fix",
     "dev": "cross-env NODE_ENV=development nodemon app.js",
-    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
+    "test": "cross-env NODE_ENV=test jest",
     "test:watch": "npm run test -- --watch ",
     "test:coverage":"jest --coverage"
   },
